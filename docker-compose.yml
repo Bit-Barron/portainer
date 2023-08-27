@@ -5,7 +5,7 @@ services:
     image: portainer/portainer-ce:latest
     container_name: portainer
     restart: always
-    command: --admin-password "$$2y$$05$$QgoabVnNBN3gR4wezwQovOm0glw00bQvUPORrYxz7.rI/rnw07cBG"
+    command: barron:$$apr1$$4uq26k8n$$Vs9e7mJ.Ytn3clbfE4MCx1
     security_opt:
       - no-new-privileges:true
     networks:
@@ -16,7 +16,7 @@ services:
 #       - ./portainer-data:/data
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.portainer.rule=Host(`$DOMAIN`)'
+      - 'traefik.http.routers.portainer.rule=Host(`barron.app`)'
       - 'traefik.http.routers.portainer.entrypoints=websecure'
       - 'traefik.http.routers.portainer.tls.certresolver=letsencrypt'
       - 'traefik.http.services.portainer.loadbalancer.server.port=9000'
