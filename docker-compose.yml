@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
     restart: always
-    command: barron:$$apr1$$4uq26k8n$$Vs9e7mJ.Ytn3clbfE4MCx1
+    command: --admin-password "$$2y$$05$$QgoabVnNBN3gR4wezwQovOm0glw00bQvUPORrYxz7.rI/rnw07cBG"
     security_opt:
       - no-new-privileges:true
     networks:
@@ -13,10 +11,10 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-#       - ./portainer-data:/data
+    #       - ./portainer-data:/data
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.portainer.rule=Host(`barron.app`)'
+      - 'traefik.http.routers.portainer.rule=Host(`portainer.barron.agency`)'
       - 'traefik.http.routers.portainer.entrypoints=websecure'
       - 'traefik.http.routers.portainer.tls.certresolver=letsencrypt'
       - 'traefik.http.services.portainer.loadbalancer.server.port=9000'
